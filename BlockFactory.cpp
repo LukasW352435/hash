@@ -17,13 +17,22 @@ BlockFactory::BlockFactory(std::string message) {
         blocks.push_back(block);
         pos+=64;
     }while (pos<size);
-    if(substring.length()<57)
+    if(substring.length()<56)
     {
+        block.appendOne(size%64);
         block.addSize(size*8);
         blocks.pop_back();
         blocks.push_back(block);
+    }else if(substring.length()<64){
+        block.appendOne(size%64);
+        blocks.pop_back();
+        blocks.push_back(block);
+        block = Block();
+        block.addSize(size*8);
+        blocks.push_back(block);
     } else{
         block = Block();
+        block.appendOne(0);
         block.addSize(size*8);
         blocks.push_back(block);
     }
@@ -38,4 +47,7 @@ ostream& operator<<(ostream& os, const BlockFactory& blockFactory) {
 
 ulong BlockFactory::size() {
     return blocks.size();
+}
+list<Block> BlockFactory::getBlocks() {
+    return blocks;
 }

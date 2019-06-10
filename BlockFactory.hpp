@@ -5,8 +5,8 @@
 #ifndef HASH_BLOCKFACTORY_HPP
 #define HASH_BLOCKFACTORY_HPP
 
-#include "Block.hpp"
 #include <list>
+#include "Block.hpp"
 
 class BlockFactory {
 private:
@@ -15,6 +15,7 @@ public:
     BlockFactory(std::string message);
     friend std::ostream& operator<< (std::ostream& os, const BlockFactory& BlockFactory);
     ulong size();
+    std::list<Block> getBlocks();
 };
 
 #endif //HASH_BLOCKFACTORY_HPP
