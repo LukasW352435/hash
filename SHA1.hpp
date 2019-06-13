@@ -9,7 +9,7 @@
 #include "Block.hpp"
 
 class SHA1 {
-private:
+protected:
     uint h1=0x67452301;
     uint h2=0xEFCDAB89;
     uint h3=0x98BADCFE;
@@ -28,9 +28,10 @@ private:
     void round2(std::array<uint,80> *x);
     void round3(std::array<uint,80> *x);
     void round4(std::array<uint,80> *x);
-    void createHash(std::list<Block> *blocks);
+    virtual void createHash(std::list<Block> *blocks);
     static uint rotateLeft(uint value, uint n);
 public:
+    SHA1();
     SHA1(std::string message);
     SHA1(std::list<Block> *blocks);
     friend std::ostream& operator<<(std::ostream& os,const SHA1& sha1);

@@ -9,9 +9,10 @@
 #include "Block.hpp"
 
 class BlockFactory {
-private:
+protected:
     std::list<Block> blocks;
 public:
+    BlockFactory();
     BlockFactory(std::string message);
     friend std::ostream& operator<< (std::ostream& os, const BlockFactory& BlockFactory);
     ulong size();

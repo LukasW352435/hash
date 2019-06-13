@@ -8,6 +8,9 @@
 
 using namespace std;
 
+SHA1::SHA1() {
+
+}
 SHA1::SHA1(std::string message) {
     BlockFactory b = BlockFactory(message);
     list<Block> blocks = b.getBlocks();
@@ -115,3 +118,5 @@ uint SHA1::rotateLeft(uint value, uint n){
     n &= mask;
     return (value<<n) | (value>>( (-n)&mask ));
 }
+
+
